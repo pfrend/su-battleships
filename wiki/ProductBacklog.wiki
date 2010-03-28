@@ -33,3 +33,5 @@ As a User I can destroy all enemy’s ships so I can win.
 As an AI I can destroy all User’s ships so I can win.
 
 As an AI can wait some time so User can decide where to shoot.
+
+As a User i can play the game with some of my friends
