@@ -1,0 +1,7 @@
+#summary Game concept
+#labels concept
+
+= Battleships =
+
+http://en.wikipedia.org/wiki/Battleship_(game)
+
