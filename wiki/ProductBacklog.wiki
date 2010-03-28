@@ -1,5 +1,6 @@
 #summary Battleships Product Backlog
 #labels backlog
+*User & AI*
 
 As a User I can start the application on my phone so I can play my favorite game.
 
