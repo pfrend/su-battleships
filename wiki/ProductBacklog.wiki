@@ -2,7 +2,7 @@
 #labels backlog
 *User & AI*
 
-As a User I can start the application on my phone so I can play my favorite game.
+||As a User I can start the application on my phone so I can play my favorite game.||1||
 
 As a User I can see the game menu so I can choose what to do next.
 
