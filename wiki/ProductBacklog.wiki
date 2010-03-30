@@ -8,7 +8,7 @@
 ||As a User I can see “Options Screen” so I know that I can configure my game experience.||1||
 ||As a User I can turn on and off game sound so I can play on silent places (at work, at class)||1||
 ||As a User I can turn off and on vibration so if I don’t like it any more I can turn it off.||1||
-||As a User I can quit the game when I don’t have time to play.||1||
+||As a User I can quit the game when I don’t have time to play.||0||
 ||As a User I can start new battleship game so I can play finally.||1||
 ||As a User I can choose my AI opponent so he matches my skill.||1||
 ||As a User I can arrange my ships so enemy will not find them easy.||1||
