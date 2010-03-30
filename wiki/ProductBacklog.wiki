@@ -3,15 +3,10 @@
 *User & AI*
 
 ||As a User I can start the application on my phone so I can play my favorite game.||1||
-
 ||As a User I can see the game menu so I can choose what to do next.||1||
-
 ||As a User I can see the current application version, authors, game website in “About Screen” so that I know useful info about the game.||1||
-
 ||As a User I can see “Options Screen” so I know that I can configure my game experience.||1||
-
 ||As a User I can turn on and off game sound so I can play on silent places (at work, at class)||1||
-
 ||As a User I can turn off and on vibration so if I don’t like it any more I can turn it off.||1||
 
 ||As a User I can quit the game when I don’t have time to play.||1||
