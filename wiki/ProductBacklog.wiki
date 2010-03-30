@@ -4,44 +4,44 @@
 
 ||As a User I can start the application on my phone so I can play my favorite game.||1||
 
-As a User I can see the game menu so I can choose what to do next.
+||As a User I can see the game menu so I can choose what to do next.||1||
 
-As a User I can see the current application version, authors, game website in “About Screen” so that I know useful info about the game.
+||As a User I can see the current application version, authors, game website in “About Screen” so that I know useful info about the game.||1||
 
-As a User I can see “Options Screen” so I know that I can configure my game experience.
+||As a User I can see “Options Screen” so I know that I can configure my game experience.||1||
 
-As a User I can turn on and off game sound so I can play on silent places (at work, at class)
+||As a User I can turn on and off game sound so I can play on silent places (at work, at class)||1||
 
-As a User I can turn off and on vibration so if I don’t like it any more I can turn it off.
+||As a User I can turn off and on vibration so if I don’t like it any more I can turn it off.||1||
 
-As a User I can quit the game when I don’t have time to play.
+||As a User I can quit the game when I don’t have time to play.||1||
 
-As a User I can start new battleship game so I can play finally.
+||As a User I can start new battleship game so I can play finally.||1||
 
-As a User I can choose my AI opponent so he matches my skill.
+||As a User I can choose my AI opponent so he matches my skill.||1||
 
-As a User I can arrange my ships so enemy will not find them easy.
+||As a User I can arrange my ships so enemy will not find them easy.||1||
 
-As a User I can choose auto arrange ships so when I’m lazy the game will arrange them for me.
+||As a User I can choose auto arrange ships so when I’m lazy the game will arrange them for me.||1||
 
-As an AI I can arrange my ships with some algorithm so I can play with User.
+||As an AI I can arrange my ships with some algorithm so I can play with User.||1||
 
-As a User I can shoot so I can destroy enemy’s ships.
+||As a User I can shoot so I can destroy enemy’s ships.||1||
 
-As an AI I can shoot with some algorithm so I can shoot User’s ships.
+||As an AI I can shoot with some algorithm so I can shoot User’s ships.||1||
 
-As a User I can see my gameboard so I know my status.
+||As a User I can see my gameboard so I know my status.||1||
 
-As a User I can see how many ships I have left.
+||As a User I can see how many ships I have left.||1||
 
-As a User I can see how many of my opponent's ships are left.
+||As a User I can see how many of my opponent's ships are left.||1||
 
-As a User I can see my opponent's gameboard so I can plot my strategy.
+||As a User I can see my opponent's gameboard so I can plot my strategy.||1||
 
-As a User I can destroy all enemy’s ships so I can win.
+||As a User I can destroy all enemy’s ships so I can win.||1||
 
-As an AI I can destroy all User’s ships so I can win.
+||As an AI I can destroy all User’s ships so I can win.||1||
 
-As an AI can wait some time so User can decide where to shoot.
+||As an AI can wait some time so User can decide where to shoot.||1||
 
-As a User i can play the game with some of my friends
+||As a User i can play the game with some of my friends||1||
