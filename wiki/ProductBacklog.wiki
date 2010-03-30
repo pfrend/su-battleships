@@ -30,6 +30,14 @@ As a User I can shoot so I can destroy enemy’s ships.
 
 As an AI I can shoot with some algorithm so I can shoot User’s ships.
 
+As a User I can see my gameboard so I know my status.
+
+As a User I can see how many ships I have left.
+
+As a User I can see how many of my opponent's ships are left.
+
+As a User I can see my opponent's gameboard so I can plot my strategy.
+
 As a User I can destroy all enemy’s ships so I can win.
 
 As an AI I can destroy all User’s ships so I can win.
