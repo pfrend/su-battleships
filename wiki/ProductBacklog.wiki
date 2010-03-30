@@ -24,3 +24,6 @@
 ||As an AI I can destroy all User’s ships so I can win.||1||
 ||As an AI can wait some time so User can decide where to shoot.||1||
 ||As a User i can play the game with some of my friends||1||
+||As a User I can choose to start new battleship game in "Superweapons" mode, so I can play different type of game. ||1||
+||As a User I can use different types of weapons to attack the opponent's ships, so that the game can have various ways of playing. () ||1||
+||As an AI I can use different attack algorithms for the different kinds of weapons, so I can shoot User’s ships. () ||1||
