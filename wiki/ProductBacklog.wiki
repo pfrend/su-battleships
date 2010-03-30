@@ -18,6 +18,8 @@ As a User I can quit the game when I don’t have time to play.
 
 As a User I can start new battleship game so I can play finally.
 
+As a User I can choose my AI opponent so he matches my skill.
+
 As a User I can arrange my ships so enemy will not find them easy.
 
 As a User I can choose auto arrange ships so when I’m lazy the game will arrange them for me.
