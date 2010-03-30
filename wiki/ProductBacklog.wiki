@@ -1,7 +1,7 @@
 #summary Battleships Product Backlog
 #labels backlog
 *User & AI*
-
+||As a User I want to play the game on different resolutions,so that it runs on every possible device||1||
 ||As a User I can start the application on my phone so I can play my favorite game.||1||
 ||As a User I can see the game menu so I can choose what to do next.||1||
 ||As a User I can see the current application version, authors, game website in “About Screen” so that I know useful info about the game.||1||
