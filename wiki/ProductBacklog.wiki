@@ -1,6 +1,14 @@
 #summary Battleships Product Backlog
 #labels backlog
 *User & AI*
+||As a User I can play on a table 10x10 with fixed ship positions.||
+||As a User I can see a game menu with nice graphics||
+||As a User I can see an about||
+||As a User I can see a minimap with the positions of my ships and enemy moves||
+||As a User I can fire using a fire button||
+||As a User I can move a single ship on a 10x10 table||
+
+
 ||As a User I can see the current application version, authors, game website in “About Screen” so that I know useful info about the game.||5||
 ||As a User I can start the application on my phone so I can play my favorite game.||1||
 ||As a User I can see the game menu so I can choose what to do next.||3||
