@@ -1,3 +1,5 @@
+#summary Idea for Gameplay tutorials
+
 = Idea for Gameplay tutorials =
 
    On the last meeting was decided that in the first sprint the aim will be to complete a "minimal prototype" of the game. Tony has updated the Demo user stories proposed by the Product Owner. In order not to separate code and functionalities in different projects, i propose the following idea:
