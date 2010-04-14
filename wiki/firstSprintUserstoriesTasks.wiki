@@ -12,7 +12,7 @@ As a Player i can see cool starting screen while the game loads.
 
 
 
-2.Menu Screen
+2.Menu Screen 
 As a Player i can see menu screen so i can view what i can do in this game.
 
 Graphics tasks:
@@ -22,6 +22,7 @@ Dev tasks:
 -Activity with ImageViews , click handlers for menu buttons redirecting to different Activities.
 -layout format - LayoutViews/GridViews/positioning/styling
 
+(*) Simple game menu can be seen in downloads/ Simple mockup for game menu
 
 3.Tutorials Screen
 As a Player i can see the Tutorials screen so i can choose to view the tutorials available
