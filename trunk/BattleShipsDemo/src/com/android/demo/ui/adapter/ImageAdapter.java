@@ -25,7 +25,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return aiFields[position];
+        return playerFields[position];
     }
 
     public long getItemId(int position) {
@@ -52,7 +52,7 @@ public class ImageAdapter extends BaseAdapter {
         
         imageView.setClickable(false);
         
-        aiFields[position] = imageView;
+        playerFields[position%Game.BOARD_SIZE] = imageView;
         return imageView;
     }
 
@@ -65,7 +65,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.sample_0
     };
     
-    private ImageView[] aiFields = new ImageView[Game.BOARD_SIZE];
+    private ImageView[] playerFields = new ImageView[Game.BOARD_SIZE];
 
     private boolean isShipPosition(int position){
     	for(int i = 0 ; i < shipPositions.length ; i++){

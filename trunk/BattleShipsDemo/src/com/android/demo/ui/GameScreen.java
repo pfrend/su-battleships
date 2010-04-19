@@ -1,14 +1,15 @@
 package com.android.demo.ui;
 
-import java.net.URL;
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -23,24 +24,62 @@ public class GameScreen extends Activity {
 	private Game game;
 	private AiImageAdapter aiImageAdapter;
 	private ImageAdapter playerImageAdapter;
+	
+	private ProgressBar progressBar;
+	private LoadScreenAsyncTask progressBarTask;
+	
+	private boolean isLoadingScreen;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
-		
-		this.game = new Game();
-		int[] aiShipFields = { 0, 1, 2 };
-		int[] playerShipFields = { 0, 1, 2 };
+		super.onCreate(savedInstanceState);			
+		isLoadingScreen = getIntent().getBooleanExtra("loading_screen", false);
+		// start gameLoading thread
+		GameLoadingThread gameLoadingThread = new GameLoadingThread(handler);
+		gameLoadingThread.execute("Loading...");
 
-		game.setAiShip(3, aiShipFields);
-		game.setPlayerShip(3, playerShipFields);
+		// start progressBar worker thread if Activiry is configured to display the loading_screen
+		if(isLoadingScreen){
+			progressBarTask = new LoadScreenAsyncTask();
+			progressBarTask.execute("Loading");
+		}else{
+			displayGameScreen();
+		}
+	}
 
+	private void aiMakeMove() {
+		AiMoveResponse aiMoveResponse = game.makeMoveForAi();
+		ImageView _iv = (ImageView) playerImageAdapter.getItem(aiMoveResponse
+				.getMoveField());
+		if (aiMoveResponse.isItaHit()) {
+			_iv.setImageResource(R.drawable.red);
+		} else {
+			_iv.setImageResource(R.drawable.grey);
+		}
+
+	}
+	
+	// Define the Handler that receives messages from the gameLoading thread and
+	// update the
+	// speed of the progressBar thread
+	final Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+			if(!isLoadingScreen){
+				return;
+			}
+			boolean isLoaded = msg.getData().getBoolean("isLoaded");
+			if (isLoaded) {
+				progressBarTask.setStatus(LoadScreenAsyncTask.STATUS_FINISHED);
+			}
+		}
+	};
+	
+	private void displayGameScreen(){
 		setContentView(R.layout.main);
-
-		GridView gridview = (GridView) findViewById(R.id.GridView01);
-		aiImageAdapter = new AiImageAdapter(this);
+		
+		GridView gridview = (GridView) findViewById(R.id.GridView01);			
 		gridview.setAdapter(aiImageAdapter);
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
@@ -69,45 +108,114 @@ public class GameScreen extends Activity {
 			}
 		});
 
-		GridView playerGridView = (GridView) findViewById(R.id.GridView02);
-		playerImageAdapter = new ImageAdapter(this, playerShipFields);
+		GridView playerGridView = (GridView) findViewById(R.id.GridView02);			
 		playerGridView.setAdapter(playerImageAdapter);
-
+		
 		Toast.makeText(GameScreen.this, "Player should make the first move",
 				Toast.LENGTH_SHORT).show();
-
 	}
 
-	private void aiMakeMove() {
-		AiMoveResponse aiMoveResponse = game.makeMoveForAi();
-		ImageView _iv = (ImageView) playerImageAdapter.getItem(aiMoveResponse
-				.getMoveField());
-		if (aiMoveResponse.isItaHit()) {
-			_iv.setImageResource(R.drawable.red);
-		} else {
-			_iv.setImageResource(R.drawable.grey);
+	private class GameLoadingThread extends AsyncTask<Object, Void, Void> {
+
+		private Handler mHandler;
+
+		public GameLoadingThread(Handler h) {
+			mHandler = h;
 		}
 
-	}
+		@Override
+		protected Void doInBackground(Object... params) {
+			GameScreen.this.game = new Game();
+			int[] aiShipFields = { 0, 1, 2 };
+			int[] playerShipFields = { 0, 1, 2 };
 
-	private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
-		protected Long doInBackground(URL... urls) {
-			int count = urls.length;
-			long totalSize = 0;
-			for (int i = 0; i < count; i++) {
-				totalSize += 1;
-				publishProgress((int) ((i / (float) count) * 100));
-			}
-			return totalSize;
-		}
-
-		protected void onProgressUpdate(Integer... progress) {			
-			setProgress(progress[0]);
-		}
-
-		protected void onPostExecute(Long result) {
+			game.setAiShip(3, aiShipFields);
+			game.setPlayerShip(3, playerShipFields);			
 			
+			//set imageAdapters that will be passed to the gameboards' gridViews in the UI thread 
+			aiImageAdapter = new AiImageAdapter(GameScreen.this);
+			playerImageAdapter = new ImageAdapter(GameScreen.this, game.getPlayerShip().getBoardFields());
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO: handle exception
+			}
+
+			Message msg = mHandler.obtainMessage();
+			Bundle b = new Bundle();
+			b.putBoolean("isLoaded", true);
+			msg.setData(b);
+			mHandler.sendMessage(msg);			
+			return null;
 		}
+
+	}
+
+	private class LoadScreenAsyncTask extends AsyncTask<String, Integer, String> {
+
+		private static final int MAX_PROGRESS_STEPS = 15;
+		private int status = STATUS_RUNNING_NORMAL;
+		public static final int STATUS_RUNNING_NORMAL = 1;;
+		public static final int STATUS_RUNNING_FAST = 2;
+		public static final int STATUS_FINISHED = 3;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			setContentView(R.layout.progressbar_loadscreen);
+			progressBar = (ProgressBar) findViewById(R.id.progress_horizontal);
+			progressBar.setMax(MAX_PROGRESS_STEPS);
+			progressBar.setProgressDrawable(getResources().getDrawable(
+					R.drawable.progress_horizontal));
+		}
+
+		protected void onProgressUpdate(Integer... progress) {
+			progressBar.setProgress(progress[0]);
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			int i = 0;
+			while (status == STATUS_RUNNING_NORMAL) {
+				try {
+					Thread.sleep(200);
+					i++;					
+				} catch (InterruptedException e) {
+
+				}
+				publishProgress(i);
+			}
+			while (i < MAX_PROGRESS_STEPS) {
+				try {
+					Thread.sleep(20);
+					i++;					
+				} catch (InterruptedException e) {
+
+				}
+				publishProgress(i);
+			}			
+			return "MyAsyncTask done successfully";
+		}
+
+		/**
+		 * Executed by UI thread after task has finished its job
+		 */
+		protected void onPostExecute(String result) {		
+			displayGameScreen();
+		}
+
+		/**
+		 * This method is used to tell the thread whether it is time to force
+		 * faster progress of the progressBar and whether it is time to
+		 * terminate
+		 * 
+		 * @param status
+		 */
+		public void setStatus(int status) {
+			this.status = status;
+		}
+
 	}
 
 }

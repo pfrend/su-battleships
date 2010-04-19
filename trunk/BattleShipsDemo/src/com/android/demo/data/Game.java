@@ -67,7 +67,20 @@ public class Game {
 	public void setAiShip(int len,int[] fields){
 		aiShip = new Ship(len,fields);
 	}
-	
+	/**
+	 * @return the playerShip
+	 */
+	public Ship getPlayerShip() {
+		return playerShip;
+	}
+
+	/**
+	 * @return the aiShip
+	 */
+	public Ship getAiShip() {
+		return aiShip;
+	}
+
 	//return true if shot hit a ship
 	public boolean updatePlayerMove(int field){
 		aiBoard[field] = ATTACKED;
@@ -92,11 +105,18 @@ public class Game {
 		return false;
 	}
 
-	private class Ship {
+	public class Ship {
 		private int length;
 		private int hitCounts = 0;
 		private int[] boardFields;
 		private boolean[] fieldsState;// true-not hit / false - hit
+		
+		/**
+		 * @return the boardFields
+		 */
+		public int[] getBoardFields() {
+			return boardFields;
+		}
 		
 		public Ship(int length,int[] _fields) {
 			this.length = length;
@@ -122,7 +142,7 @@ public class Game {
 			}
 			return false;
 		}
-		
+				
 		public boolean isShipDestroyed(){
 			return this.length == hitCounts;
 		}

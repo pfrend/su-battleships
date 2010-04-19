@@ -1,5 +1,6 @@
 package com.android.demo.ai_factory;
 
+import java.util.Calendar;
 import java.util.Random;
 
 import android.util.Log;
@@ -44,14 +45,16 @@ public class AiFactory {
 					possibleShots[possibleShotsCount++] = i;						
 				}
 			}
+			Calendar calendar = Calendar.getInstance();
+			long randomNumber = calendar.getTimeInMillis();
 			
-			Random rand = new Random(possibleShotsCount);
+			Random rand = new Random(randomNumber);
 			int randomIndex = rand.nextInt()%possibleShotsCount;
 			if(randomIndex < 0){
 				randomIndex = -randomIndex;
 			}
 			//Log.d("KOPELEEEEE", ""+randomIndex);
 			return possibleShots[randomIndex];
-		}		
+		}
 	}
 }
