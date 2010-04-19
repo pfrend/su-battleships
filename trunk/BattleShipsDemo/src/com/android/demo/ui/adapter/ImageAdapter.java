@@ -48,9 +48,10 @@ public class ImageAdapter extends BaseAdapter {
         	imageView.setImageResource(R.drawable.yellow);
         }else{
         	imageView.setImageResource(R.drawable.blue);
-        }
+        }      
         
-        imageView.setClickable(false);
+        imageView.setClickable(Boolean.TRUE);
+        imageView.setEnabled(Boolean.TRUE);
         
         playerFields[position%Game.BOARD_SIZE] = imageView;
         return imageView;
