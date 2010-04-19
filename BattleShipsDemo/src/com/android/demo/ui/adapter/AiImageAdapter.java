@@ -41,6 +41,7 @@ public class AiImageAdapter extends BaseAdapter {
         } else {
             imageView = (ImageView) convertView;
         }
+        
         imageView.setImageResource(R.drawable.blue);        
         aiFields[position] = imageView;
         return imageView;

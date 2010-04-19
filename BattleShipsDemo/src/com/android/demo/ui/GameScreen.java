@@ -83,15 +83,23 @@ public class GameScreen extends Activity {
 		gridview.setAdapter(aiImageAdapter);
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View v,int position, long id) {
 				ImageView _iv = (ImageView) v;
+//				ImageView _iv = (ImageView) aiImageAdapter.getItem(position);
+//				if(!_iv.isClickable()){
+//					Toast.makeText(GameScreen.this,
+//							"WTF. "+_iv.isClickable(),
+//							Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+				
 				boolean isOpponentShipHit = game.updatePlayerMove(position);
 				if (isOpponentShipHit) {
 					_iv.setImageResource(R.drawable.red);
 				} else {
 					_iv.setImageResource(R.drawable.grey);
 				}
+				_iv.setClickable(false);
 
 				if (game.isGameOver()) {
 					Toast.makeText(GameScreen.this,
@@ -110,6 +118,16 @@ public class GameScreen extends Activity {
 
 		GridView playerGridView = (GridView) findViewById(R.id.GridView02);			
 		playerGridView.setAdapter(playerImageAdapter);
+		playerGridView.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
+					long arg3) {
+				if(!view.isClickable()){
+					return;
+				}
+				Toast.makeText(GameScreen.this, "The position clicked is: "+arg2, Toast.LENGTH_SHORT).show();
+			}			
+		});
 		
 		Toast.makeText(GameScreen.this, "Player should make the first move",
 				Toast.LENGTH_SHORT).show();
