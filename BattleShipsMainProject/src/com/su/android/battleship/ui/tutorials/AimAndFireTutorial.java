@@ -72,7 +72,6 @@ public class AimAndFireTutorial extends Activity {
 		});
 		
 		fireButton.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(View v) {
 				if(aimedField == NO_FIELD_IS_AIMED){
 					Toast.makeText(AimAndFireTutorial.this, "Aim board field in order to fire.", 1000).show();
