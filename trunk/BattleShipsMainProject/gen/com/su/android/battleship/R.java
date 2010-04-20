@@ -14,12 +14,13 @@ public final class R {
         public static final int aim_and_fire_tutorial=0x7f020000;
         public static final int blue=0x7f020001;
         public static final int fire_btn=0x7f020002;
-        public static final int grey=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int menu_bkgrnd=0x7f020005;
-        public static final int red=0x7f020006;
-        public static final int view_minimap=0x7f020007;
-        public static final int yellow=0x7f020008;
+        public static final int fix_ship_game=0x7f020003;
+        public static final int grey=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int menu_bkgrnd=0x7f020006;
+        public static final int red=0x7f020007;
+        public static final int view_minimap=0x7f020008;
+        public static final int yellow=0x7f020009;
     }
     public static final class id {
         public static final int Button01=0x7f050003;
@@ -37,8 +38,9 @@ public final class R {
     public static final class string {
         public static final int aim_fire_tutorial=0x7f040003;
         public static final int app_name=0x7f040001;
+        public static final int fix_ship_game_tutorial=0x7f040004;
         public static final int hello=0x7f040000;
-        public static final int tutorials_label=0x7f040004;
+        public static final int tutorials_label=0x7f040005;
         public static final int view_tutorials=0x7f040002;
     }
 }
