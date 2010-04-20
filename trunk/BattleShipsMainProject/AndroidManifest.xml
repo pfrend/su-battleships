@@ -12,6 +12,7 @@
 
 	<activity android:name=".ui.tutorials.TutorialsScreen" android:label="@string/tutorials_label"></activity>
 <activity android:name=".ui.tutorials.AimAndFireTutorial" android:label="AimAndFireTutorial"></activity>
+<activity android:name=".ui.tutorials.FixShipGameTutorial" android:label="@string/fix_ship_game_tutorial"></activity>
 </application>
 
 
