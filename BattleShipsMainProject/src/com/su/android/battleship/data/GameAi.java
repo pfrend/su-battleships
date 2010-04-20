@@ -11,18 +11,16 @@ public class GameAi extends Game{
 	private AiPlayer bot;
 	
 	/**
-	 * The call to this constructor should be made after AiPlayer bot is instantiated
-	 * because the bot is supposed to generate secondPlayerShips configuration,which has to
+	 * The call to this constructor should be made after ShipPositionGenerator is instantiated
+	 * because the it is supposed to generate secondPlayerShips configuration,which has to
 	 * be passed in this constructor. 
 	 * @param playerOnMove - which player has the first move
 	 * @param firstPlayerShips - first player's ships configuration
 	 * @param secondPlayerShips - second player's (which is ai) ships configuration
-	 * @param bot - the bot that will play as second player and that was used to generate and pass second player's ship configuration
 	 */
-	public GameAi(short playerOnMove,Ship[] firstPlayerShips,Ship[] secondPlayerShips,AiPlayer bot) {		
+	public GameAi(short playerOnMove,Ship[] firstPlayerShips,Ship[] secondPlayerShips) {		
 		super(playerOnMove,firstPlayerShips,secondPlayerShips);
-//		bot = AiFactory.getInstance().produceAiPlayer(0,this);
-		this.bot = bot;
+		bot = AiFactory.getInstance().produceAiPlayer(AiFactory.AI_RANDOM_PLAYER,this);		
 	}
 
 	/**

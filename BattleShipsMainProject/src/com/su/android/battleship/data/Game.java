@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Game {
 	public static final short BOARD_SIZE = 10;
-	public static final short SHIPS_COUNT = 4;
+	public static final short SHIPS_COUNT = 5;
 	
 	/*Can take values 0 and 1 - stands for the index of the player which is to make move*/
 	private short playerOnMove;
@@ -112,7 +112,7 @@ public class Game {
 		Short[] board_0 = new Short[BOARD_SIZE*BOARD_SIZE];
 		Short[] board_1 = new Short[BOARD_SIZE*BOARD_SIZE];
 		
-		for(int i = 0 ; i < BOARD_SIZE; i++ ){
+		for(int i = 0 ; i < BOARD_SIZE*BOARD_SIZE; i++ ){
 			board_0[i] = BoardFieldStatus.WATER;
 			board_1[i] = BoardFieldStatus.WATER;
 		}
@@ -133,8 +133,10 @@ public class Game {
 		Short[] board = this.playersBoards.get(boardIndex);
 		short[] shipFieldsAsBoardIndexes = ship.getBoardFields();
 		short boardMarker = BoardFieldStatus.getShipMarkerCode(shipIndex);
+		short index;
 		for(int i = 0 ; i < ship.getLength() ; i++){
-			board[i] = boardMarker;
+			index = shipFieldsAsBoardIndexes[i];
+			board[index] = boardMarker;
 		}
 	}
 	
