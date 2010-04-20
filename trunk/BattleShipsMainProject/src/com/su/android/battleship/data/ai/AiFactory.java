@@ -11,6 +11,8 @@ import android.util.Log;
 
 public class AiFactory {
 	
+	public static final short AI_RANDOM_PLAYER = 0;
+	
 	private static AiFactory instance = new AiFactory();
 	
 	public static AiFactory getInstance(){

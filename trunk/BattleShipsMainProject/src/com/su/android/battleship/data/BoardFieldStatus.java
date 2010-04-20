@@ -22,6 +22,9 @@ public class BoardFieldStatus {
 	public static final short SHIP_3 = 0x03;
 	public static final short SHIP_3_ATTACKED = 0x13;
 	
+	public static final short SHIP_4 = 0x04;
+	public static final short SHIP_4_ATTACKED = 0x14;
+	
 	public static short getAttackedFieldCode(short notAttackedFieldCode){
 		return (short) (notAttackedFieldCode + 0x10);
 	}
@@ -41,6 +44,9 @@ public class BoardFieldStatus {
 		case 3:
 			boardMarker = BoardFieldStatus.SHIP_3;
 			break;
+		case 4:
+			boardMarker = BoardFieldStatus.SHIP_4;
+			break;
 
 		default:
 			boardMarker = -1;
@@ -54,8 +60,8 @@ public class BoardFieldStatus {
 	 * @return whether code is a ship that IS NOT attacked
 	 */
 	public static boolean isShipNotAttackedStatus(short code){
-		return (code == SHIP_0) || (code == SHIP_1) 
-			   || (code == SHIP_2) || (code == SHIP_3);
+		return (code == SHIP_0) || (code == SHIP_1) ||(code == SHIP_2)
+				|| (code == SHIP_3) || (code == SHIP_4);
 	}
 	
 	/**
@@ -64,8 +70,8 @@ public class BoardFieldStatus {
 	 * @return whether code is a ship that IS attacked
 	 */
 	public static boolean isShipAttackedStatus(short code){
-		return (code == SHIP_0_ATTACKED) || (code == SHIP_1_ATTACKED) 
-			   || (code == SHIP_2_ATTACKED) || (code == SHIP_3_ATTACKED);
+		return (code == SHIP_0_ATTACKED) || (code == SHIP_1_ATTACKED)||
+		(code == SHIP_2_ATTACKED)|| (code == SHIP_3_ATTACKED)|| (code == SHIP_4_ATTACKED);
 	}
 	
 	/**

@@ -7,6 +7,4 @@ public abstract class AiPlayer {
 	protected GameAi game;	
 	
 	public abstract short generateMove();
-	
-	public abstract Ship[] generateShipsPosition(short boardSize);
 }

@@ -1,8 +1,15 @@
 package com.su.android.battleship.ui.tutorials;
 
+import com.su.android.battleship.R;
+import com.su.android.battleship.data.BoardFieldStatus;
+import com.su.android.battleship.data.Game;
+import com.su.android.battleship.data.GameAi;
+import com.su.android.battleship.data.Ship;
+import com.su.android.battleship.data.ShipPositionGenerator;
+import com.su.android.battleship.data.ai.AiFactory;
+import com.su.android.battleship.data.ai.iface.AiPlayer;
 import com.su.android.battleship.ui.adapter.TutorialMenuImageAdapter;
 
-import com.su.android.battleship.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,45 +20,20 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-/**
- * This Activity renders simple 10x10 buttons-grid and a big Fire button
- * The UI user can aim by touching grid's buttons and after aim is made ,she can 
- * fire using the Fire button.
- * 
- * Demo is adopting simple aim logic and dislpay - not 'sights' supported yet
- * and no real data objects are used yet (i.e. - Game , Board , Ship etc.)
- *  
- * @author vasil.konstantinov
- *
- */
-public class AimAndFireTutorial extends Activity {
+public class FixShipGameTutorial extends AimAndFireTutorial {
 	
-	protected static final int NO_FIELD_IS_AIMED = -1;
+	protected Game game;
 	
-	protected TutorialMenuImageAdapter imageAdapter;
-	protected int aimedField = NO_FIELD_IS_AIMED;
-	
-	protected GridView boardGrid;
-	protected ImageView fireButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);		
-		displayGameScreen();
+		super.displayGameScreen();
 		attachActionListeners();
-	}
+		initGame();
+	}	
 	
-	protected void displayGameScreen(){
-		setContentView(R.layout.aim_fire_tutorial);		
-		fireButton = (ImageView) findViewById(R.id.ImageViewFB);
-		
-		boardGrid = (GridView) findViewById(R.id.GridViewAFD);			
-		
-		imageAdapter = new TutorialMenuImageAdapter(this);	
-		boardGrid.setAdapter(imageAdapter);
-	}
-	
-	private void attachActionListeners(){
+	protected void attachActionListeners(){		
 		//boardGame GridView listener sets the aimedField property and changes aim color
 		boardGrid.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,int position, long id) {
@@ -74,18 +56,32 @@ public class AimAndFireTutorial extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(aimedField == NO_FIELD_IS_AIMED){
-					Toast.makeText(AimAndFireTutorial.this, "Aim board field in order to fire.", 1000).show();
+					Toast.makeText(FixShipGameTutorial.this, "Aim board field in order to fire.", 1000).show();
 				}else{
 					ImageView field = (ImageView) boardGrid.getItemAtPosition(aimedField);
 					executeFire(field);
 				}
-			}			
+			}
 		});		
 	}
 	
 	private void executeFire(ImageView _iv){
-		_iv.setImageResource(R.drawable.red);//mark as fired
+		short newFieldStatus = game.executeMove((short)0, (short)aimedField);
+		if(BoardFieldStatus.isShipAttackedStatus(newFieldStatus)){
+			_iv.setImageResource(R.drawable.red);//mark as fired
+		}else{
+			_iv.setImageResource(R.drawable.grey);//mark as fired
+		}		
 		_iv.setClickable(false);//make imageView unclickable
 		aimedField = NO_FIELD_IS_AIMED;
+	}
+	
+	protected void initGame(){
+		ShipPositionGenerator generator = new ShipPositionGenerator();
+		
+		Ship[] generatedShipPosition1 = generator.getHardcodedShipPosition();
+		Ship[] generatedShipPosition2 = generator.getHardcodedShipPosition();
+		
+		game = new GameAi((short)0,generatedShipPosition1,generatedShipPosition2);		
 	}
 }

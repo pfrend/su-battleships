@@ -1,5 +1,11 @@
 package com.su.android.battleship.data;
 
+/**
+ * This class stores the length of a game ship and indexes of the fields on which it resides
+ * on the game board.It also sustain state of destruction for every ship
+ * @author vasil.konstantinov
+ *
+ */
 public class Ship {
 	
 	//TODO : implement logic that stores state of the Ship's attacked field in order

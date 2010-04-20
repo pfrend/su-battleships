@@ -37,22 +37,31 @@ public class TutorialsScreen extends Activity {
         mGrid.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v,int position, long id) {
-				Intent mIntent = null;			
-				if(position == 0){
+				Intent mIntent = null;
+				switch (position) {
+				case 0: //this is AimAndFire tutorial
 					mIntent = new Intent(v.getContext(),AimAndFireTutorial.class);
 					startActivity(mIntent);
-				}				
+					break;
+				case 1: //this is Fixed ship game tutorial
+					mIntent = new Intent(v.getContext(),FixShipGameTutorial.class);
+					startActivity(mIntent);
+					break;
+				default:
+					break;
+				}
 			}        	
         });        
 	}
 	
 	public class ImageAdapter extends BaseAdapter {
-        private static final int TUTORIAL_MENU_BUTTONS_COUNT = 2;
+        private static final int TUTORIAL_MENU_BUTTONS_COUNT = 3;
         private Context mContext;
         private ImageView[] menuItems = new ImageView[TUTORIAL_MENU_BUTTONS_COUNT];
 
         private Integer[] menuPictures = {
         		R.drawable.aim_and_fire_tutorial,
+        		R.drawable.fix_ship_game,
         		R.drawable.view_minimap
         };
 

@@ -36,11 +36,4 @@ public class AiRandomPlayer extends AiPlayer {
 		}
 		return possibleShots[randomIndex];
 	}
-
-	@Override
-	public Ship[] generateShipsPosition(short boardSize) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
