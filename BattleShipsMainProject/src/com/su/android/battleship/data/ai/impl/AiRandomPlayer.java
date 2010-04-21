@@ -1,6 +1,8 @@
 package com.su.android.battleship.data.ai.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import com.su.android.battleship.data.BoardFieldStatus;
@@ -11,29 +13,33 @@ import com.su.android.battleship.data.ai.iface.AiPlayer;
 
 public class AiRandomPlayer extends AiPlayer {
 	
+	private List<Short> possibleShots;	
+	
 	public AiRandomPlayer(GameAi game) {
 		super.game = game;
+		possibleShots = new ArrayList<Short>(Game.BOARD_SIZE);
+		for(short i = 0 ; i < Game.BOARD_SIZE ; i++){
+			possibleShots.add(i);
+		}		
 	}
-
+	
 	@Override
 	public short generateMove() {
 		Short[] playerBoard = game.getPlayerBoard((short)1);//ai is always the second player
 
-		short possibleShotsCount = 0;
-		short[] possibleShots = new short[Game.BOARD_SIZE];
-		for (short i = 0; i < playerBoard.length; i++) {
-			if (!BoardFieldStatus.isAttackedFieldStatus(playerBoard[i])) {
-				possibleShots[possibleShotsCount++] = i;
-			}
-		}
+		
+		short possibleShotsCount = (short) possibleShots.size();
+		
 		Calendar calendar = Calendar.getInstance();
 		long randomNumber = calendar.getTimeInMillis();
 
 		Random rand = new Random(randomNumber);
+		//TODO : handle exception if all possible moves are made and there is yet another
+		// generateMove method call - this will throw AritmethicException - devide by zero
 		int randomIndex = rand.nextInt() % possibleShotsCount;
 		if (randomIndex < 0) {
-			randomIndex = -randomIndex;
+			randomIndex += possibleShotsCount;
 		}
-		return possibleShots[randomIndex];
+		return possibleShots.remove(randomIndex);
 	}
 }
