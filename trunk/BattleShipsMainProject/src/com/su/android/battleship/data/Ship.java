@@ -52,8 +52,18 @@ public class Ship {
 		}
 		return false;
 	}
-			
+	
+	/**
+	 * @return whether or not all ship fields are attacked
+	 */
 	public boolean isShipDestroyed(){
 		return this.length == hitCounts;
+	}
+	
+	/**
+	 * @return the number of attacked fields of the ship
+	 */
+	public short getShipHitStatus(){
+		return hitCounts;
 	}
 }

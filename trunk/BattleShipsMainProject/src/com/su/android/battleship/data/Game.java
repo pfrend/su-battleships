@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-	public static final short BOARD_SIZE = 10;
+	public static final short BOARD_SIZE = 100;
 	public static final short SHIPS_COUNT = 5;
+		
 	
 	/*Can take values 0 and 1 - stands for the index of the player which is to make move*/
 	private short playerOnMove;
@@ -89,12 +90,15 @@ public class Game {
 			boolean isHit = tempShip.updateShipState(fieldPosition);
 			if(isHit){
 				if(tempShip.isShipDestroyed()){
-					short oldCount = destroyedShipsCount.get(player);
-					destroyedShipsCount.add((short) (oldCount+1));
-					if(destroyedShipsCount.get(player) == SHIPS_COUNT){
+					short opponentPlayer = getOppositePlayer(player);
+					short oldCount = destroyedShipsCount.get(opponentPlayer);
+					destroyedShipsCount.set(opponentPlayer,(short) (oldCount+1));					
+					if(destroyedShipsCount.get(opponentPlayer) == SHIPS_COUNT){
 						gameOver = true;
 					}
 				}
+			}else{
+				//TODO : throw exception - ship is always hit , because of the boardFieldStatus check, that shows the field is a notHitShipField
 			}
 		}
 		return newFieldStatus;
@@ -109,10 +113,10 @@ public class Game {
 	}
 	
 	private void createStartingBoards(){
-		Short[] board_0 = new Short[BOARD_SIZE*BOARD_SIZE];
-		Short[] board_1 = new Short[BOARD_SIZE*BOARD_SIZE];
+		Short[] board_0 = new Short[BOARD_SIZE];
+		Short[] board_1 = new Short[BOARD_SIZE];
 		
-		for(int i = 0 ; i < BOARD_SIZE*BOARD_SIZE; i++ ){
+		for(int i = 0 ; i < BOARD_SIZE ; i++ ){
 			board_0[i] = BoardFieldStatus.WATER;
 			board_1[i] = BoardFieldStatus.WATER;
 		}

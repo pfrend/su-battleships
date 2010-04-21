@@ -1,6 +1,6 @@
 package com.su.android.battleship.ui.tutorials;
 
-import com.su.android.battleship.ui.adapter.TutorialMenuImageAdapter;
+import com.su.android.battleship.ui.adapter.GameBoardImageAdapter;
 
 import com.su.android.battleship.R;
 import android.app.Activity;
@@ -28,15 +28,17 @@ public class AimAndFireTutorial extends Activity {
 	
 	protected static final int NO_FIELD_IS_AIMED = -1;
 	
-	protected TutorialMenuImageAdapter imageAdapter;
+	protected GameBoardImageAdapter boardImageAdapter;
 	protected int aimedField = NO_FIELD_IS_AIMED;
 	
 	protected GridView boardGrid;
 	protected ImageView fireButton;
 	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);		
+		initGame();
 		displayGameScreen();
 		attachActionListeners();
 	}
@@ -45,13 +47,13 @@ public class AimAndFireTutorial extends Activity {
 		setContentView(R.layout.aim_fire_tutorial);		
 		fireButton = (ImageView) findViewById(R.id.ImageViewFB);
 		
-		boardGrid = (GridView) findViewById(R.id.GridViewAFD);			
+		boardGrid = (GridView) findViewById(R.id.GridViewAFD);
 		
-		imageAdapter = new TutorialMenuImageAdapter(this);	
-		boardGrid.setAdapter(imageAdapter);
+		boardImageAdapter = new GameBoardImageAdapter(this);	
+		boardGrid.setAdapter(boardImageAdapter);
 	}
 	
-	private void attachActionListeners(){
+	protected void attachActionListeners(){
 		//boardGame GridView listener sets the aimedField property and changes aim color
 		boardGrid.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,int position, long id) {
@@ -61,7 +63,7 @@ public class AimAndFireTutorial extends Activity {
 					executeFire(_iv);
 				}else{
 					if(aimedField != NO_FIELD_IS_AIMED){
-						ImageView _oldSelectedField = (ImageView)imageAdapter.getItem(aimedField);
+						ImageView _oldSelectedField = (ImageView)boardImageAdapter.getItem(aimedField);
 						_oldSelectedField.setImageResource(R.drawable.blue);
 					}
 					_iv.setImageResource(R.drawable.yellow);
@@ -87,5 +89,9 @@ public class AimAndFireTutorial extends Activity {
 		_iv.setImageResource(R.drawable.red);//mark as fired
 		_iv.setClickable(false);//make imageView unclickable
 		aimedField = NO_FIELD_IS_AIMED;
+	}
+	
+	protected void initGame(){
+		
 	}
 }

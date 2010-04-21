@@ -5,8 +5,8 @@ import com.su.android.battleship.data.ai.iface.AiPlayer;
 
 
 public class GameAi extends Game{	
-	private static final short PLAYER_INDEX = 0;
-	private static final short AI_INDEX = 1;
+	public static final short PLAYER_INDEX = 0;
+	public static final short AI_INDEX = 1;
 	
 	private AiPlayer bot;
 	
@@ -43,10 +43,10 @@ public class GameAi extends Game{
 	}	
 	
 	public class AiMoveResponse{
-		private int moveField;
+		private short moveField;
 		private boolean isItaHit;
 		
-		public AiMoveResponse(int m,boolean h) {
+		public AiMoveResponse(short m,boolean h) {
 			this.moveField = m;
 			this.isItaHit = h;
 		}
@@ -54,7 +54,7 @@ public class GameAi extends Game{
 		/**
 		 * @return the moveField
 		 */
-		public int getMoveField() {
+		public short getMoveField() {
 			return moveField;
 		}
 
