@@ -1,7 +1,9 @@
 package com.su.generator.randomizer;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -19,7 +21,7 @@ import java.util.TreeSet;
  * @author vasko
  * 
  */
-public class IndexRowRandomizer {
+public class ExcludeRowRandomizer {
 
 	private static Random random = new Random(Calendar.getInstance()
 			.getTimeInMillis());
@@ -70,15 +72,16 @@ public class IndexRowRandomizer {
 		set.add(2);
 		set.add(1);
 		set.add(4);
-
-		IndexRowRandomizer.getRandomIndexFromExclusiveRow(7, set);
+		
+		ExcludeRowRandomizer.getRandomIndexFromExclusiveRow(7, set);
 
 		int temp;
 		for (int i = 0; i < 20; i++) {
-			temp = IndexRowRandomizer.getRandomIndexFromExclusiveRow(7, set);
+			temp = ExcludeRowRandomizer.getRandomIndexFromExclusiveRow(7, set);
 			System.out
 					.println("random from {0,1,2,3,4,5,6} excluding {0,1,2,4}: "
 							+ temp);
+			
 		}
 	}
 
