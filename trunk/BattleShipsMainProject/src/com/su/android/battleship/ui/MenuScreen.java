@@ -19,7 +19,7 @@ public class MenuScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_menu);
 		
-		Button continueButton = (Button) findViewById(R.id.Button01);
+		Button continueButton = (Button) findViewById(R.id.ButtonPlay);
 		continueButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				 Intent mIntent = new Intent(view.getContext(),TutorialsScreen.class);
