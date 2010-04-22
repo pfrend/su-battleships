@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+	public static final short BOARD_SIDE = 10;
 	public static final short BOARD_SIZE = 100;
 	public static final short SHIPS_COUNT = 5;
 		
