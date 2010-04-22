@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="MenuButton">
+		<item name="android:background">@drawable/menu_button</item>
+		<item name="android:typeface">serif</item>
+		<item name="android:textColor">#FF201000</item>
+		<item name="android:textSize">26sp</item>
+	</style>
+</resources>
