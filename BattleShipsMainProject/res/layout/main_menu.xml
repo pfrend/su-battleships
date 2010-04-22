@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
-<Button android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/view_tutorials"></Button>
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/menu_background">
+	
+	<ImageView
+		android:id="@+id/ImageView01"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/logo"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginTop="15dp"
+		android:layout_marginBottom="20dp"/>
+	
+	<Button
+		android:id="@+id/ButtonPlay" 
+		android:text="@string/menu_play"
+		style="@style/MenuButton"/>
+		
+	<Button
+		android:id="@+id/ButtonOptions" 
+		android:text="@string/menu_options"
+		style="@style/MenuButton"/>
+		
+	<Button
+		android:id="@+id/ButtonAbout" 
+		android:text="@string/menu_about"
+		style="@style/MenuButton"/>
+		
+	<Button
+		android:id="@+id/ButtonQuit" 
+		android:text="@string/menu_quit"
+		style="@style/MenuButton"/>
 </LinearLayout>
