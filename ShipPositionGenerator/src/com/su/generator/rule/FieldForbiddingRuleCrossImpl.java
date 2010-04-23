@@ -26,7 +26,9 @@ public class FieldForbiddingRuleCrossImpl implements FieldForbiddingRule {
 	@Override
 	public List<Integer> getForbiddenFields(int field) {
 		List<Integer> resultList = new ArrayList<Integer>();
-
+		//the given ship fields is sure to be forbidden
+		resultList.add(field);
+		
 		int tempNeighbourPosition;
 		BoardField bf = BoardField.getBoardFieldFromIndex(field, boardSideSize);		
 		if (hashBoardNeighbourField(bf, Orientation.UP)) {

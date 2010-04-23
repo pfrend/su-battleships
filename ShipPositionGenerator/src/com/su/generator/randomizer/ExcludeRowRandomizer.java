@@ -23,9 +23,12 @@ import java.util.TreeSet;
  */
 public class ExcludeRowRandomizer {
 
-	private static Random random = new Random(Calendar.getInstance()
-			.getTimeInMillis());
+	private  Random random;
 
+	public ExcludeRowRandomizer() {
+		random = new Random(Calendar.getInstance()
+				.getTimeInMillis());
+	}
 	/**
 	 * @param rowCount
 	 *            - the upper exclusive limit of the index row - if rowCount is
@@ -36,21 +39,26 @@ public class ExcludeRowRandomizer {
 	 *            from the rest of the numbers - {0,1,4}.
 	 * @return - random number from the row numbers that are not excluded from
 	 *         the choosing
+	 * @throws ExcludeRowRandomizerAllExcludedException 
 	 */
-	public static int getRandomIndexFromExclusiveRow(int rowCount,
-			SortedSet<Integer> excludedNumbers) {
+	public int getRandomIndexFromExclusiveRow(int rowCount,
+			SortedSet<Integer> excludedNumbers) throws ExcludeRowRandomizerAllExcludedException {
 		// TODO : handle assert criteria - rowCount must be bigger than all
 		// numbers in the excludedNumbers set and should be bigger than their
 		// count
 		int modul = rowCount - excludedNumbers.size();		
-
+		
+		if(modul <= 0){
+			throw new ExcludeRowRandomizerAllExcludedException("All numbers are excluded from the row - no random choosing available");
+		}
+		
 		int randomIndex = random.nextInt(modul);
 		int result = getNthNotExcludedNumber(randomIndex, excludedNumbers);
 
 		return result;
 	}
 
-	private static int getNthNotExcludedNumber(int nth,
+	private int getNthNotExcludedNumber(int nth,
 			SortedSet<Integer> excludedNumbers) {
 		// nth + excludedNumber.size() should be smaller then the whole size ,
 		// however this method does not have to assert that
@@ -66,18 +74,20 @@ public class ExcludeRowRandomizer {
 		return result;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExcludeRowRandomizerAllExcludedException {
+		ExcludeRowRandomizer test = new ExcludeRowRandomizer();
+		
 		SortedSet<Integer> set = new TreeSet<Integer>();
 		set.add(0);
 		set.add(2);
 		set.add(1);
 		set.add(4);
 		
-		ExcludeRowRandomizer.getRandomIndexFromExclusiveRow(7, set);
+		test.getRandomIndexFromExclusiveRow(7, set);
 
 		int temp;
 		for (int i = 0; i < 20; i++) {
-			temp = ExcludeRowRandomizer.getRandomIndexFromExclusiveRow(7, set);
+			temp = test.getRandomIndexFromExclusiveRow(7, set);
 			System.out
 					.println("random from {0,1,2,3,4,5,6} excluding {0,1,2,4}: "
 							+ temp);
