@@ -42,6 +42,7 @@ public class GameMenuScreen extends Activity implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.ButtonBack:
+			finish();
 			break;
 		}
 	}
