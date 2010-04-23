@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World!</string>
-    <string name="app_name">BattleShipsMainProject</string>
+    <string name="app_name">BattleShips</string>
 	<string name="view_tutorials">View Tutorials</string>
 	<string name="aim_fire_tutorial">Aim and Fire Tutorial</string>
 	<string name="fix_ship_game_tutorial">Fix Ship Game Tutorial</string>
