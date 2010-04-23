@@ -154,6 +154,10 @@ public class RandomShipGenerator {
 	}
 
 	public static void main(String[] args) {
+		testOnBoard4();
+	}
+	
+	private static void testOnBoard4(){
 		short boardSideSize = 4;
 		ShipFieldsHolder temp;
 
@@ -172,7 +176,35 @@ public class RandomShipGenerator {
 		} catch (AllShipPositionsForbiddenException e) {
 			System.err.println(e.getMessage());
 		}
+	}
+	
+	private static void testOnBoard10(){
+		short boardSideSize = 10;
+		ShipFieldsHolder temp;
 
+		RandomShipGenerator test = new RandomShipGenerator(boardSideSize);
+		try {
+			temp = test.generateRandomShipPosition((short) 5);
+			printTest(temp, boardSideSize);
+
+			test.addShipUpdateState(temp);
+			temp = test.generateRandomShipPosition((short) 4);
+			printTest(temp, boardSideSize);
+
+			test.addShipUpdateState(temp);
+			temp = test.generateRandomShipPosition((short) 3);
+			printTest(temp, boardSideSize);
+			
+			test.addShipUpdateState(temp);
+			temp = test.generateRandomShipPosition((short) 3);
+			printTest(temp, boardSideSize);
+			
+			test.addShipUpdateState(temp);
+			temp = test.generateRandomShipPosition((short) 3);
+			printTest(temp, boardSideSize);
+		} catch (AllShipPositionsForbiddenException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	private static void printTest(ShipFieldsHolder sfh, short boardSideSize) {
