@@ -10,4 +10,8 @@
 	<string name="menu_options">Settings</string>
 	<string name="menu_about">Credits</string>
 	<string name="menu_quit">Quit</string>
+	<string name="menu_single">Singleplayer</string>
+	<string name="menu_multi">Multiplayer</string>
+	<string name="menu_tutorials">Tutorials</string>
+	<string name="menu_back">Back</string>
 </resources>
