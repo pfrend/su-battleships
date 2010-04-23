@@ -9,24 +9,25 @@
 	<ImageView
 		android:id="@+id/ImageLogo"
 		style="@style/MenuLogo"/>
-	
+		
 	<Button
-		android:id="@+id/ButtonPlay" 
-		android:text="@string/menu_play"
+		android:id="@+id/ButtonSingle" 
+		android:text="@string/menu_single"
 		style="@style/MenuButton"/>
 		
 	<Button
-		android:id="@+id/ButtonOptions" 
-		android:text="@string/menu_options"
+		android:id="@+id/ButtonMulti" 
+		android:text="@string/menu_multi"
 		style="@style/MenuButton"/>
 		
 	<Button
-		android:id="@+id/ButtonAbout" 
-		android:text="@string/menu_about"
+		android:id="@+id/ButtonTutorials" 
+		android:text="@string/menu_tutorials"
 		style="@style/MenuButton"/>
 		
 	<Button
-		android:id="@+id/ButtonQuit" 
-		android:text="@string/menu_quit"
+		android:id="@+id/ButtonBack" 
+		android:text="@string/menu_back"
 		style="@style/MenuButton"/>
+		
 </LinearLayout>

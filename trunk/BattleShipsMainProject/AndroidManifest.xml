@@ -11,6 +11,9 @@
 			</intent-filter>
 		</activity>
 		
+		<activity android:name=".ui.GameMenuScreen" android:label="@string/app_name">
+		</activity>
+		
 		<activity android:name=".ui.tutorials.TutorialsScreen" android:label="@string/tutorials_label">
 		</activity>
 		
