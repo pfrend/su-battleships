@@ -41,6 +41,7 @@ public class MainMenuScreen extends Activity implements OnClickListener {
 		case R.id.ButtonAbout:
 			break;
 		case R.id.ButtonQuit:
+			finish();
 			break;
 		}
 	}
