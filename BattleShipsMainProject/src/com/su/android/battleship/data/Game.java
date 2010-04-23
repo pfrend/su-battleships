@@ -7,6 +7,7 @@ public class Game {
 	public static final short BOARD_SIDE = 10;
 	public static final short BOARD_SIZE = 100;
 	public static final short SHIPS_COUNT = 5;
+	public static final short[] SHIPS_SIZES = new short[]{5,4,3,2,2};
 		
 	
 	/*Can take values 0 and 1 - stands for the index of the player which is to make move*/

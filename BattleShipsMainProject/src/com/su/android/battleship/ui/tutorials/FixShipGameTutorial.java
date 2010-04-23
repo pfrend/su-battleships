@@ -48,7 +48,6 @@ public class FixShipGameTutorial extends AimAndFireTutorial {
 		short[] playerShipFields = getPlayerShipFields();
 		minimapImageAdapter = new MinimapImageAdapter(this, playerShipFields);
 		minimapGrid.setAdapter(minimapImageAdapter);
-
 	}
 
 	protected void attachActionListeners() {		
@@ -110,8 +109,11 @@ public class FixShipGameTutorial extends AimAndFireTutorial {
 	protected void initGame() {
 		ShipPositionGenerator generator = new ShipPositionGenerator();
 
-		Ship[] generatedShipPosition1 = generator.getHardcodedShipPosition();
-		Ship[] generatedShipPosition2 = generator.getHardcodedShipPosition();
+//		Ship[] generatedShipPosition1 = generator.getHardcodedShipPosition();
+//		Ship[] generatedShipPosition2 = generator.getHardcodedShipPosition();
+		
+		Ship[] generatedShipPosition1 = generator.getRandomShipsPosition();
+		Ship[] generatedShipPosition2 = generator.getRandomShipsPosition();
 
 		game = new GameAi((short) 0, generatedShipPosition1,
 				generatedShipPosition2);

@@ -1,7 +1,18 @@
 package com.su.android.battleship.data;
 
+import java.util.List;
+
+import com.su.data.ShipFieldsHolder;
+import com.su.generator.AllShipPositionsForbiddenException;
+import com.su.generator.RandomShipGenerator;
+
 public class ShipPositionGenerator {
 	
+	private RandomShipGenerator generator;
+	
+	public ShipPositionGenerator() {
+		generator = new RandomShipGenerator(Game.BOARD_SIDE);
+	}
 	
 	public Ship[] getHardcodedShipPosition(){
 		Ship[] resultShips = new Ship[Game.SHIPS_COUNT]; //5
@@ -21,5 +32,33 @@ public class ShipPositionGenerator {
 		return resultShips;
 	}
 	
-	//TODO : implement random position generation algorithms 
+	public Ship[] getRandomShipsPosition(){		
+		short currentShipSize;
+		ShipFieldsHolder tempSFH;
+		List<Short> tempList;
+		short[] tempArray;
+		Ship[] resultShips = new Ship[Game.SHIPS_COUNT];
+		
+		for(int i = 0 ; i < Game.SHIPS_SIZES.length ; i++){
+			currentShipSize = Game.SHIPS_SIZES[i];
+			try {
+				tempSFH = generator.generateRandomShipPosition(currentShipSize);
+				tempList = ShipFieldsHolder.getShipFields(tempSFH, Game.BOARD_SIDE);
+				tempArray = new short[tempList.size()];
+				for(int j = 0 ; j < tempList.size() ; j++){
+					tempArray[j] = tempList.get(j);
+				}
+				resultShips[i] = new Ship(currentShipSize,tempArray);
+				
+				//DO NOT forget to update generator with the currently randomized ship, or else ships may intersect
+				generator.addShipUpdateState(tempSFH);
+			} catch (AllShipPositionsForbiddenException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return resultShips;
+	}
+	
 }
