@@ -26,8 +26,8 @@ public class ShipPositionEncoderDefaultImpl implements ShipPositionEncoder {
 
 	private short boardSideSize;
 	
-	public ShipPositionEncoderDefaultImpl(short boardSize) {
-		this.boardSideSize = boardSize;
+	public ShipPositionEncoderDefaultImpl(short boardSideSize) {
+		this.boardSideSize = boardSideSize;
 	}
 	
 	@Override
@@ -54,10 +54,11 @@ public class ShipPositionEncoderDefaultImpl implements ShipPositionEncoder {
 		int positionCode;
 		if(sfh.getDirection().equals(Direction.HORIZONTAL)){
 			positionCode = directionSign*posCodesCount/2 + 
-							(boardSideSize - shipSize + 1)*y + x;
+			(boardSideSize - shipSize + 1)*y + x;		
+			
 		}else{
 			positionCode = directionSign*posCodesCount/2 + 
-							(boardSideSize - shipSize + 1)*x + y;
+			(boardSideSize - shipSize + 1)*x + y;
 		}
 		
 		
@@ -112,7 +113,13 @@ public class ShipPositionEncoderDefaultImpl implements ShipPositionEncoder {
 		decodedShip = testEncoder.getShipRepresentation(code, (short)2);
 		printTest2(encodedShip, decodedShip);
 		
-		encodedShip = new ShipFieldsHolder(2,5,Direction.VERTICAL);
+		encodedShip = new ShipFieldsHolder(2,2,Direction.VERTICAL);
+		code = testEncoder.getPositionCode(encodedShip);		
+		printTest1(encodedShip, code);
+		decodedShip = testEncoder.getShipRepresentation(code, (short)2);
+		printTest2(encodedShip, decodedShip);
+		
+		encodedShip = new ShipFieldsHolder(2,3,Direction.VERTICAL);
 		code = testEncoder.getPositionCode(encodedShip);		
 		printTest1(encodedShip, code);
 		decodedShip = testEncoder.getShipRepresentation(code, (short)2);

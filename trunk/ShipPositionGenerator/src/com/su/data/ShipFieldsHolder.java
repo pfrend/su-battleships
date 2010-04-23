@@ -1,5 +1,8 @@
 package com.su.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShipFieldsHolder {
 	
 	private int length;
@@ -55,7 +58,51 @@ public class ShipFieldsHolder {
 		this.direction = direction;
 	}
 	
+	/**
+	 * @param sfh - the ShipFieldsHolder ship representation from which a List with all ship fields should be returned
+	 * @return - returns List with the ship's fields 
+	 */
+	public static List<Short> getShipFields(ShipFieldsHolder sfh,short boardSideSize){
+		List<Short> resultList;
+		
+		int firstField = sfh.getFirstField();
+		int shipLength = sfh.getLength();
+		Direction d = sfh.getDirection();		
+		
+		switch (d) {
+		case HORIZONTAL:
+			resultList = getShipFieldsFromHorizontalSFH(firstField,shipLength);
+			break;
+		case VERTICAL:
+			resultList = getShipFieldsFromVerticalSFH(firstField,shipLength,boardSideSize);
+			break;
+		default:
+			resultList = null;
+			break;
+		}
+		
+		return resultList;
+	}
 	
+	private static List<Short> getShipFieldsFromHorizontalSFH(int firstField,int shipLength){
+		List<Short> resultList = new ArrayList<Short>();
+		for(int i = 0 ; i < shipLength ; i++){
+			resultList.add((short)(firstField + i));
+		}		
+		return resultList;
+	}
+	
+	private static List<Short> getShipFieldsFromVerticalSFH(int firstField,int shipLength,short boardSideSize){
+		List<Short> resultList = new ArrayList<Short>();
+		for(int i = 0 ; i < shipLength ; i++){
+			resultList.add((short)(firstField + boardSideSize*i));
+		}		
+		return resultList;
+	}
+	
+	/**
+	 * This method is overridden so that effective Set's add operation can be executed
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null){
