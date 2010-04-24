@@ -17,6 +17,7 @@ import com.su.generator.randomizer.ExcludeRowRandomizer;
 import com.su.generator.randomizer.ExcludeRowRandomizerAllExcludedException;
 import com.su.generator.rule.FieldForbiddingRule;
 import com.su.generator.rule.FieldForbiddingRuleCrossImpl;
+import com.su.generator.rule.FieldForbiddingRuleSquareImpl;
 import com.su.manager.ForbiddenPositionsManager;
 
 /**
@@ -57,7 +58,9 @@ public class RandomShipGenerator {
 				(short) (boardSideSize));
 		this.positionManager = new ForbiddenPositionsManager();
 		this.shipsManager = new ForbiddenShipsManager(boardSideSize);
-		this.rule = new FieldForbiddingRuleCrossImpl(boardSideSize);
+		
+//		this.rule = new FieldForbiddingRuleCrossImpl(boardSideSize);
+		this.rule = new FieldForbiddingRuleSquareImpl(boardSideSize);
 	}
 
 	/**
