@@ -10,8 +10,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/**
+ * Game menu screen - Singleplayer, Multiplayer, Tutorials, Back
+ * 
+ * @author Nikola
+ *
+ */
 public class GameMenuScreen extends Activity implements OnClickListener {
 
+	/**
+	 * Called when activity is starting
+	 * 
+	 * @param savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,6 +41,11 @@ public class GameMenuScreen extends Activity implements OnClickListener {
 		buttonBack.setOnClickListener(this);
 	}
 
+	/**
+	 * Called when a menu button has been clicked
+	 * 
+	 * @param v button instance
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

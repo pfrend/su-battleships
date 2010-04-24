@@ -9,8 +9,19 @@ import android.widget.Button;
 
 import com.su.android.battleship.R;
 
+/**
+ * First application screen. The main menu - Play, Options, Credits, Quit
+ * 
+ * @author Nikola
+ *
+ */
 public class MainMenuScreen extends Activity implements OnClickListener {
 	
+	/**
+	 * Called when activity is starting
+	 * 
+	 * @param savedInstanceState
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +40,11 @@ public class MainMenuScreen extends Activity implements OnClickListener {
 		buttonQuit.setOnClickListener(this);
 	}
 
+	/**
+	 * Called when a menu button has been clicked
+	 * 
+	 * @param v button instance
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
