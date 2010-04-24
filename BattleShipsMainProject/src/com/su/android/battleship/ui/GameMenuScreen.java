@@ -46,7 +46,6 @@ public class GameMenuScreen extends Activity implements OnClickListener {
 	 * 
 	 * @param v button instance
 	 */
-	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ButtonSingle:
