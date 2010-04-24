@@ -35,7 +35,6 @@ public class TutorialsScreen extends Activity {
         mGrid.setAdapter(new ImageAdapter(TutorialsScreen.this)); 
         
         mGrid.setOnItemClickListener(new OnItemClickListener() {
-			@Override
 			public void onItemClick(AdapterView<?> parent, View v,int position, long id) {
 				Intent mIntent = null;
 				switch (position) {
