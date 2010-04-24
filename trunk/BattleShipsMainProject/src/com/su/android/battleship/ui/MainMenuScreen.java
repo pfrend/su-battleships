@@ -45,7 +45,6 @@ public class MainMenuScreen extends Activity implements OnClickListener {
 	 * 
 	 * @param v button instance
 	 */
-	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ButtonPlay:
