@@ -74,7 +74,6 @@ public class FixShipGameTutorial extends AimAndFireTutorial {
 		});
 
 		fireButton.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(View v) {
 				if (aimedField == NO_FIELD_IS_AIMED) {					
 					Toast.makeText(FixShipGameTutorial.this,
