@@ -44,8 +44,7 @@ public class GameMenuScreen extends Activity implements OnClickListener {
 	/**
 	 * Called when a menu button has been clicked
 	 * 
-	 * @param button 
-	 * 			menu button instance
+	 * @param button	menu button instance
 	 */
 	public void onClick(View button) {
 		switch (button.getId()) {
