@@ -82,6 +82,8 @@ public class MainMenuScreen extends Activity implements OnClickListener {
 		case R.id.ButtonOptions:
 			break;
 		case R.id.ButtonAbout:
+			Intent intentAbout = new Intent(this, About.class);
+			startActivity(intentAbout);
 			break;
 		case R.id.ButtonQuit:
 			finish();
