@@ -70,11 +70,11 @@ public class MainMenuScreen extends Activity implements OnClickListener {
 	/**
 	 * Called when a menu button has been clicked
 	 * 
-	 * @param v
-	 *            button instance
+	 * @param button
+	 *            menu button instance
 	 */
-	public void onClick(View v) {
-		switch (v.getId()) {
+	public void onClick(View button) {
+		switch (button.getId()) {
 		case R.id.ButtonPlay:
 			Intent intent = new Intent(this, GameMenuScreen.class);
 			startActivity(intent);
