@@ -13,4 +13,5 @@
 	<string name="menu_multi">Multiplayer</string>
 	<string name="menu_tutorials">Tutorials</string>
 	<string name="menu_back">Back</string>
+	<string name="about">Android Battleships\nAuthors:\nRoss Nikola Ivo Vasko Tony</string>
 </resources>

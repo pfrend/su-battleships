@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<style name="About">
+		<item name="android:typeface">serif</item>
+		<item name="android:textColor">#FF201000</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:layout_width">260dp</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_gravity">center_horizontal</item>
+		<item name="android:layout_marginTop">-15dp</item>
+		<item name="android:layout_marginBottom">15dp</item>
+		<item name="android:padding">20dp</item>
+		<item name="android:background">@drawable/map_plane</item>
+	</style>
+</resources>
